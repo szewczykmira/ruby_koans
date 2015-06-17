@@ -13,7 +13,16 @@
 # and
 #   about_triangle_project_2.rb
 #
-def triangle(a, b, c)
+def is_triangle(a,b,c)
+    a_lesser = a < b + c
+    b_lesser = b < a + c
+    c_lesser = c < a + b
+    return a_lesser && b_lesser && c_lesser
+end
+def triangle(a,b, c)
+    if ! is_triangle a, b, c
+        raise TriangleError
+    end
     value = :scalene
     if a == b  || b == c || a == c
         value = :isosceles
